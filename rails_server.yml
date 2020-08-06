@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  roles:
+    - common
+    - ruby
+    - webapp
+- hosts: databases
+  roles:
+    - common
+    - mysql
