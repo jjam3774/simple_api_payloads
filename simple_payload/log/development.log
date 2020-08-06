@@ -1,0 +1,630 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePayloads (20200806173137)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "payloads" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200806173137"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (21.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-06 17:36:59.210619"], ["updated_at", "2020-08-06 17:36:59.210619"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 10.0.2.2 at 2020-08-06 17:39:46 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.5.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.5.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb (6.4ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 10.0.2.2 at 2020-08-06 17:39:48 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/payloads" for 10.0.2.2 at 2020-08-06 17:41:11 +0000
+Processing by PayloadsController#index as HTML
+  [1m[36mPayload Load (0.5ms)[0m  [1m[34mSELECT "payloads".* FROM "payloads"[0m
+Completed 200 OK in 17ms (Views: 3.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/v1/payloads" for 10.0.2.2 at 2020-08-06 17:41:35 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/payloads"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/payloads" for 10.0.2.2 at 2020-08-06 17:42:03 +0000
+Processing by PayloadsController#index as HTML
+  [1m[36mPayload Load (1.2ms)[0m  [1m[34mSELECT "payloads".* FROM "payloads"[0m
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 1.2ms)
+
+
+  [1m[36mPayload Load (5.6ms)[0m  [1m[34mSELECT  "payloads".* FROM "payloads" LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:47:42 +0000
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PayloadsController#create as */*
+  Parameters: {"payload"=>"999-99-9999", "body"=>"What chu talkin about willis"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `permit' for "999-99-9999":String):
+  
+app/controllers/payloads_controller.rb:49:in `payload_params'
+app/controllers/payloads_controller.rb:18:in `create'
+Started GET "/payloads" for 10.0.2.2 at 2020-08-06 17:48:24 +0000
+Processing by PayloadsController#index as */*
+  [1m[36mPayload Load (0.6ms)[0m  [1m[34mSELECT "payloads".* FROM "payloads"[0m
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:49:06 +0000
+Processing by PayloadsController#create as */*
+  Parameters: {"message"=>"What chu talkin about willis", "payload"=>{"message"=>"What chu talkin about willis"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (39.2ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "What chu talkin about willis"], ["created_at", "2020-08-06 17:49:06.105319"], ["updated_at", "2020-08-06 17:49:06.105319"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 90ms (Views: 1.1ms | ActiveRecord: 45.5ms)
+
+
+Started GET "/payloads" for 10.0.2.2 at 2020-08-06 17:49:23 +0000
+Processing by PayloadsController#index as */*
+  [1m[36mPayload Load (1.3ms)[0m  [1m[34mSELECT "payloads".* FROM "payloads"[0m
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:51:13 +0000
+Processing by PayloadsController#create as */*
+  Parameters: {"message"=>"Go fork yourself", "payload"=>{"message"=>"Go fork yourself"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (40.6ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Go fork yourself"], ["created_at", "2020-08-06 17:51:13.560885"], ["updated_at", "2020-08-06 17:51:13.560885"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 51ms (Views: 0.7ms | ActiveRecord: 44.8ms)
+
+
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:52:29 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+{
+	"message":"Go fork yourself"
+},
+{
+	"message":"and I mean that"
+},
+{
+	"message":"Are your parents terrorist, beacus you are the bomb"
+},
+{
+	"message":"sup pimpin"
+}
+  
+ActionDispatch::Http::Parameters::ParseError (765: unexpected token at ',
+{
+	"message":"and I mean that"
+},
+{
+	"message":"Are your parents terrorist, beacus you are the bomb"
+},
+{
+	"message":"sup pimpin"
+}'):
+  
+actionpack (5.1.7) lib/action_dispatch/http/parameters.rb:115:in `rescue in parse_formatted_parameters'
+actionpack (5.1.7) lib/action_dispatch/http/parameters.rb:109:in `parse_formatted_parameters'
+actionpack (5.1.7) lib/action_dispatch/http/request.rb:361:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (5.1.7) lib/action_dispatch/http/request.rb:360:in `POST'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:286:in `_wrapper_enabled?'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:235:in `process_action'
+activerecord (5.1.7) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.7) lib/abstract_controller/base.rb:124:in `process'
+actionpack (5.1.7) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.7) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:844:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.7) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.7) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:53:00 +0000
+Processing by PayloadsController#create as */*
+  Parameters: {"message"=>"and I mean that", "payload"=>{"message"=>"and I mean that"}}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (49.4ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "and I mean that"], ["created_at", "2020-08-06 17:53:00.557848"], ["updated_at", "2020-08-06 17:53:00.557848"]]
+  [1m[35m (15.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 90ms (Views: 6.1ms | ActiveRecord: 65.3ms)
+
+
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:53:17 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+,
+{
+	"message":"Are your parents terrorist, beacus you are the bomb"
+}
+{
+	"message":"sup pimpin"
+}
+  
+ActionDispatch::Http::Parameters::ParseError (765: unexpected token at ',
+{
+	"message":"Are your parents terrorist, beacus you are the bomb"
+}
+{
+	"message":"sup pimpin"
+}'):
+  
+actionpack (5.1.7) lib/action_dispatch/http/parameters.rb:115:in `rescue in parse_formatted_parameters'
+actionpack (5.1.7) lib/action_dispatch/http/parameters.rb:109:in `parse_formatted_parameters'
+actionpack (5.1.7) lib/action_dispatch/http/request.rb:361:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (5.1.7) lib/action_dispatch/http/request.rb:360:in `POST'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:286:in `_wrapper_enabled?'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:235:in `process_action'
+activerecord (5.1.7) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.7) lib/abstract_controller/base.rb:124:in `process'
+actionpack (5.1.7) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.7) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:844:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.7) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.7) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:53:24 +0000
+Error occurred while parsing request parameters.
+Contents:
+
+,
+{
+	"message":"Are your parents terrorist, beacus you are the bomb"
+}
+
+  
+ActionDispatch::Http::Parameters::ParseError (765: unexpected token at ',
+{
+	"message":"Are your parents terrorist, beacus you are the bomb"
+}
+'):
+  
+actionpack (5.1.7) lib/action_dispatch/http/parameters.rb:115:in `rescue in parse_formatted_parameters'
+actionpack (5.1.7) lib/action_dispatch/http/parameters.rb:109:in `parse_formatted_parameters'
+actionpack (5.1.7) lib/action_dispatch/http/request.rb:361:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (5.1.7) lib/action_dispatch/http/request.rb:360:in `POST'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:286:in `_wrapper_enabled?'
+actionpack (5.1.7) lib/action_controller/metal/params_wrapper.rb:235:in `process_action'
+activerecord (5.1.7) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.7) lib/abstract_controller/base.rb:124:in `process'
+actionpack (5.1.7) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.7) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.7) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.7) lib/action_dispatch/routing/route_set.rb:844:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.7) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.7) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.7) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/payloads" for 10.0.2.2 at 2020-08-06 17:53:38 +0000
+Processing by PayloadsController#create as */*
+  Parameters: {"message"=>"Are your parents terrorist, beacus you are the bomb", "payload"=>{"message"=>"Are your parents terrorist, beacus you are the bomb"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (32.5ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Are your parents terrorist, beacus you are the bomb"], ["created_at", "2020-08-06 17:53:38.295551"], ["updated_at", "2020-08-06 17:53:38.295551"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 201 Created in 43ms (Views: 0.8ms | ActiveRecord: 36.7ms)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (45.6ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Networked high-level monitoring"], ["created_at", "2020-08-06 18:48:57.626154"], ["updated_at", "2020-08-06 18:48:57.626154"]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Face to face didactic encryption"], ["created_at", "2020-08-06 18:48:57.679059"], ["updated_at", "2020-08-06 18:48:57.679059"]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (48.3ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Up-sized transitional portal"], ["created_at", "2020-08-06 18:48:57.688070"], ["updated_at", "2020-08-06 18:48:57.688070"]]
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (34.5ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Innovative encompassing help-desk"], ["created_at", "2020-08-06 18:48:57.743286"], ["updated_at", "2020-08-06 18:48:57.743286"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (47.8ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Profit-focused non-volatile architecture"], ["created_at", "2020-08-06 18:48:57.784163"], ["updated_at", "2020-08-06 18:48:57.784163"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.8ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Adaptive discrete firmware"], ["created_at", "2020-08-06 18:48:57.838025"], ["updated_at", "2020-08-06 18:48:57.838025"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Pre-emptive multi-tasking workforce"], ["created_at", "2020-08-06 18:48:57.848306"], ["updated_at", "2020-08-06 18:48:57.848306"]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (33.0ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Streamlined neutral definition"], ["created_at", "2020-08-06 18:48:57.857078"], ["updated_at", "2020-08-06 18:48:57.857078"]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Seamless solution-oriented complexity"], ["created_at", "2020-08-06 18:48:57.898160"], ["updated_at", "2020-08-06 18:48:57.898160"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (31.0ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Synchronised even-keeled knowledge user"], ["created_at", "2020-08-06 18:48:57.907661"], ["updated_at", "2020-08-06 18:48:57.907661"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Organic scalable synergy"], ["created_at", "2020-08-06 18:48:57.946691"], ["updated_at", "2020-08-06 18:48:57.946691"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Advanced analyzing capability"], ["created_at", "2020-08-06 18:48:57.955634"], ["updated_at", "2020-08-06 18:48:57.955634"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Progressive eco-centric initiative"], ["created_at", "2020-08-06 18:48:57.965270"], ["updated_at", "2020-08-06 18:48:57.965270"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (46.7ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Secured stable core"], ["created_at", "2020-08-06 18:48:57.975639"], ["updated_at", "2020-08-06 18:48:57.975639"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (33.9ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Profound leading edge encryption"], ["created_at", "2020-08-06 18:48:58.030083"], ["updated_at", "2020-08-06 18:48:58.030083"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Assimilated heuristic process improvement"], ["created_at", "2020-08-06 18:48:58.070340"], ["updated_at", "2020-08-06 18:48:58.070340"]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (21.0ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Stand-alone interactive interface"], ["created_at", "2020-08-06 18:48:58.081353"], ["updated_at", "2020-08-06 18:48:58.081353"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Operative asynchronous instruction set"], ["created_at", "2020-08-06 18:48:58.108970"], ["updated_at", "2020-08-06 18:48:58.108970"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (29.6ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "User-centric grid-enabled concept"], ["created_at", "2020-08-06 18:48:58.118640"], ["updated_at", "2020-08-06 18:48:58.118640"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Digitized solution-oriented productivity"], ["created_at", "2020-08-06 18:48:58.154707"], ["updated_at", "2020-08-06 18:48:58.154707"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Stand-alone fresh-thinking instruction set"], ["created_at", "2020-08-06 18:48:58.164556"], ["updated_at", "2020-08-06 18:48:58.164556"]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Virtual non-volatile internet solution"], ["created_at", "2020-08-06 18:48:58.172422"], ["updated_at", "2020-08-06 18:48:58.172422"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Polarised bifurcated info-mediaries"], ["created_at", "2020-08-06 18:48:58.182197"], ["updated_at", "2020-08-06 18:48:58.182197"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Horizontal contextually-based architecture"], ["created_at", "2020-08-06 18:48:58.190969"], ["updated_at", "2020-08-06 18:48:58.190969"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Distributed coherent middleware"], ["created_at", "2020-08-06 18:48:58.199707"], ["updated_at", "2020-08-06 18:48:58.199707"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/payload" for 10.0.2.2 at 2020-08-06 18:50:46 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/payload"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/favicon.ico" for 10.0.2.2 at 2020-08-06 18:50:46 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (6.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "payloads"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (35.0ms)[0m  [1m[35mCREATE TABLE "payloads" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "payloads"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (36.5ms)[0m  [1m[35mCREATE TABLE "payloads" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (43.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200806173137)[0m
+  [1m[35m (31.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-06 18:51:42.918328"], ["updated_at", "2020-08-06 18:51:42.918328"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-08-06 18:51:42.928621"], ["key", "environment"]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (29.1ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Intuitive neutral complexity"], ["created_at", "2020-08-06 18:51:44.640966"], ["updated_at", "2020-08-06 18:51:44.640966"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Open-architected discrete orchestration"], ["created_at", "2020-08-06 18:51:44.676492"], ["updated_at", "2020-08-06 18:51:44.676492"]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Implemented next generation infrastructure"], ["created_at", "2020-08-06 18:51:44.684868"], ["updated_at", "2020-08-06 18:51:44.684868"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Enterprise-wide static model"], ["created_at", "2020-08-06 18:51:44.693476"], ["updated_at", "2020-08-06 18:51:44.693476"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Inverse empowering policy"], ["created_at", "2020-08-06 18:51:44.701971"], ["updated_at", "2020-08-06 18:51:44.701971"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Total systemic secured line"], ["created_at", "2020-08-06 18:51:44.710207"], ["updated_at", "2020-08-06 18:51:44.710207"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Networked cohesive budgetary management"], ["created_at", "2020-08-06 18:51:44.717753"], ["updated_at", "2020-08-06 18:51:44.717753"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Persistent optimizing standardization"], ["created_at", "2020-08-06 18:51:44.725849"], ["updated_at", "2020-08-06 18:51:44.725849"]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Multi-layered motivating structure"], ["created_at", "2020-08-06 18:51:44.733792"], ["updated_at", "2020-08-06 18:51:44.733792"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Programmable asynchronous service-desk"], ["created_at", "2020-08-06 18:51:44.741800"], ["updated_at", "2020-08-06 18:51:44.741800"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Down-sized tangible website"], ["created_at", "2020-08-06 18:51:44.750200"], ["updated_at", "2020-08-06 18:51:44.750200"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Streamlined cohesive portal"], ["created_at", "2020-08-06 18:51:44.758465"], ["updated_at", "2020-08-06 18:51:44.758465"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (24.3ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Virtual encompassing concept"], ["created_at", "2020-08-06 18:51:44.771466"], ["updated_at", "2020-08-06 18:51:44.771466"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Customizable holistic moderator"], ["created_at", "2020-08-06 18:51:44.801980"], ["updated_at", "2020-08-06 18:51:44.801980"]]
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Ergonomic foreground policy"], ["created_at", "2020-08-06 18:51:44.810847"], ["updated_at", "2020-08-06 18:51:44.810847"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Customizable static encoding"], ["created_at", "2020-08-06 18:51:44.818817"], ["updated_at", "2020-08-06 18:51:44.818817"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (26.7ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Horizontal cohesive structure"], ["created_at", "2020-08-06 18:51:44.826634"], ["updated_at", "2020-08-06 18:51:44.826634"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (22.0ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Distributed uniform website"], ["created_at", "2020-08-06 18:51:44.859180"], ["updated_at", "2020-08-06 18:51:44.859180"]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (28.4ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Team-oriented methodical challenge"], ["created_at", "2020-08-06 18:51:44.886888"], ["updated_at", "2020-08-06 18:51:44.886888"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (36.2ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Innovative coherent model"], ["created_at", "2020-08-06 18:51:44.921377"], ["updated_at", "2020-08-06 18:51:44.921377"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (22.0ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Quality-focused radical superstructure"], ["created_at", "2020-08-06 18:51:44.962756"], ["updated_at", "2020-08-06 18:51:44.962756"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Distributed next generation workforce"], ["created_at", "2020-08-06 18:51:44.991088"], ["updated_at", "2020-08-06 18:51:44.991088"]]
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (26.9ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Persistent disintermediate alliance"], ["created_at", "2020-08-06 18:51:44.999200"], ["updated_at", "2020-08-06 18:51:44.999200"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (55.6ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Multi-lateral uniform function"], ["created_at", "2020-08-06 18:51:45.032164"], ["updated_at", "2020-08-06 18:51:45.032164"]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (23.8ms)[0m  [1m[32mINSERT INTO "payloads" ("message", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["message", "Versatile explicit initiative"], ["created_at", "2020-08-06 18:51:45.094436"], ["updated_at", "2020-08-06 18:51:45.094436"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/payload" for 10.0.2.2 at 2020-08-06 18:52:22 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/payload"):
+  
+actionpack (5.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.7) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.7) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.7) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.7) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.7) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/payloads" for 10.0.2.2 at 2020-08-06 18:53:28 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PayloadsController#index as HTML
+  [1m[36mPayload Load (0.9ms)[0m  [1m[34mSELECT "payloads".* FROM "payloads"[0m
+Completed 200 OK in 28ms (Views: 15.4ms | ActiveRecord: 2.5ms)
+
+
